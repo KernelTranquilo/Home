@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+quietly 'cat /proc/acpi/wakeup | grep "LID0.*enabled"' && sudo sh -c 'echo LID0 > /proc/acpi/wakeup'
+sudo systemctl suspend -i

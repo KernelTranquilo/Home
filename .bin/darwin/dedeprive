@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+for f in $(pgrep '$@'; pgrep 'FinderSyncAPIExtension'); do renice 0 -p $f; done
+

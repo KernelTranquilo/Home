@@ -1,0 +1,3 @@
+
+
+adb -s $DEVICE_SERIAL forward tcp:$1 tcp:$2

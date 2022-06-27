@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+args=($1)
+for arg in "${args[@]}"; do
+    argresult=`$2 $arg`
+    result="$result $argresult"
+done
+
+echo $result

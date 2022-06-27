@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+secretly "exec am start --user 0 -a android.intent.action.VIEW -n org.mozilla.firefox/.App"

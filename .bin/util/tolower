@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+echo "$@" | gawk '{print tolower($0)}'

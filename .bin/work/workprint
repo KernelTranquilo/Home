@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cat $HOMEWORK/log/* | less +G || cat $HOMEWORK/log/* | less

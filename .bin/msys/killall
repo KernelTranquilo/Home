@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+
+function killtask {
+   taskkill -IM "$1.exe" -F
+}
+export -f killtask
+
+eachmap "${*}" killtask

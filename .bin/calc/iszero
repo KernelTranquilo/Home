@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+function isZero {
+    [[ "`numform $1 | gawk '{ print $1 == 0.0 }'`" == '1' ]] && return
+    exit 1
+}
+export -f isZero
+
+eachmap "${*}" isZero

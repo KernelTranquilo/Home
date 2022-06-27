@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+cat `which gitcoauthor` && exit 1
+
+set -e
+message="${*}"
+[[ -z "$message" ]] && echo "no message provided" && exit 1
+messagearray=($message)
+message="$message
+"
+for (( index=${#messagearray[@]}-1 ; index>=0 ; --index )) ; do
+    [[ -z "$count" ]] && count='1' || (( ++count ))
+    `islessthan $count 6` || break
+
+    pair=`tolower "${messagearray[index]}"`
+    
+    if [[ "$pair" = 'kt' ]]; then
+        message="$message
+Co-authored-by: Kernel Tranquilo <kerneltranquilo@127.0.0.1>"
+    fi
+done
+
+git commit -m "[`git rev-parse --abbrev-ref HEAD`] - $message"

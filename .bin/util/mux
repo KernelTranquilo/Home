@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+quietly 'tmux a' && exit
+
+if [[ -z "$1" ]]; then
+    tmux
+else
+    tmux new-session "$@"\; split-window\; select-layout even-horizontal 
+fi

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+islessthan $2 $1

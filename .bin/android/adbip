@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+adb kill-server || echo no server to kill...
+sleep 2
+adb devices
+IP=`adb -d shell ip addr | grep 'state UP' -A2 | tail -n1 | gawk '{print $2}' | cut -f1  -d'/'`
+echo Using device IP address $IP
+adb tcpip 5555
+sleep 2
+adb connect $IP:5555
+

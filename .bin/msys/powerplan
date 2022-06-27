@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+[[ ! -z "$1" ]] && powercfg -setactive `powercfg -list | grep -i "$1" | awk '{print $4}'` || echo 'pass plan name'

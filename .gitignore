@@ -1,0 +1,17 @@
+*
+!.bin/
+!.bin/*
+!.bin/*/*
+!.vimrc
+!.gitconfig.home
+!.gitignore
+!.profile
+!.bashenv
+!.bash_logout
+!.zshrc
+!.minttyrc
+!.termux/
+!.termux/termux.properties
+!README.md
+.DS_Store
+*~

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+[[ -z "$3" ]] && echo 'usage: tunnel <local port> <remote port> <host> <user>' && exit 1
+localport="$1"
+remoteport="$2"
+host="$3"
+[[ -z "$4" ]] && username="$USER" || username="$4"
+ssh -L "$localport:$host:$remoteport" "$username@$host"

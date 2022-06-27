@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+[[ -z "$2" ]] && echo 0 && exit
+
+function getDiff {
+    number1=`numform $1`
+    number2=`numform $2`
+    echo $number1+$number2 | gawk -F+ '{ print $1 - $2 }'
+}
+
+args="${*}"
+args=($args)
+
+result="$1"
+for (( index = 1 ; index < ${#args[@]} ; ++index )) ; do
+    result=`getDiff $result ${args[index]}`
+done
+
+echo $result

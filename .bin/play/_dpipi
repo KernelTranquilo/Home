@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+[[ -z "$1" ]] && echo 'PC almost ready for recycling: zero writing disks and erasing bios...' && exit 123
+
+ENGINE_SENSITIVITY="$1"
+
+if [[ "$2" == '-i' ]]; then
+    read -p "Sensitivity: [$ENGINE_SENSITIVITY] " VAL;
+    VAL=${VAL:-"$ENGINE_SENSITIVITY"}
+    UNIT='"'
+else
+    read -p 'Inches per π: [10] ' VAL; 
+    VAL=${VAL:-'10'}
+fi
+
+read -p 'Dots per inch: [400] ' DPI; 
+DPI=${DPI:-'400'}
+DPI_MULT=`div 400 $DPI`
+
+VAL_MULT="`div $ENGINE_SENSITIVITY $VAL`"
+echo "`mul 10 $VAL_MULT $DPI_MULT`$UNIT"

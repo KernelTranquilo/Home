@@ -1,0 +1,1 @@
+adb logcat --pid=`adb shell pidof -s $1` | grep "$2"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+function getIntValue {
+    number=`numform $1`
+    [[ -z "$number" ]] && echo 'NaN' && return
+    echo ${number%.*}
+}
+export -f getIntValue
+eachmap "${*}" getIntValue

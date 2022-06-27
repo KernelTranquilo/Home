@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+secretly '/c/Windows/system32/mstsc.exe'

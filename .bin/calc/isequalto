@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+[[ "`numform $1`" == "`numform $2`" ]] || exit 1

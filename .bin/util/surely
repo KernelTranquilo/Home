@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+message="$@?"
+read -p "$message [yes/NO] " CHOICE
+[[ "`tolower $CHOICE`" == 'yes' ]] && exit || exit 1

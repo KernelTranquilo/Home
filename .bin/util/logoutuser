@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+if [[ -z "$1" ]] 
+ then 
+   echo USERNAME NOT PROVIDED && exit
+ fi
+
+sudo su - $1 -c "kill -15 -1" && sleep 5 && sudo pkill -KILL -u $1

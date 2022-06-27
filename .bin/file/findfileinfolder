@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+find $2 -type f | grep $1

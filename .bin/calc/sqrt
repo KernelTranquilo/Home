@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+function getSqrtOf {
+    number=`numform $1`
+    [[ -z "$number" ]] && echo 'NaN' && return
+    `isnegative $number` && echo 'imaginary' && return
+    echo $number | gawk -F+ '{ print sqrt($1) }'
+}
+export -f getSqrtOf
+eachmap "${*}" getSqrtOf

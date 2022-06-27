@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+if [[ $OSTYPE = "msys" ]]; then
+  PING_FLAGS="-n 1 www.github.com"
+else
+  PING_FLAGS="-c 1 www.github.com"
+fi
+
+ping $PING_FLAGS  > /dev/null 2>&1 && exit 1
+
+echo Disconnected

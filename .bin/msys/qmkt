@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+secretly 'qmk_toolbox.exe'

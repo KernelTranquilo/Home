@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+
+offline && exit 1
+
+cd $HOME
+quietly 'mv .git.home .git || mv .git.machome .git || ls -d .git'
+
+if [[ ! `git remote -v  | grep -i 'KernelTranquilo/home'` ]]; then
+    git remote set-url origin https://github.com/KernelTranquilo/home.git
+fi
+
+git fetch && git reset --hard origin/main || echo 'failed to update'
+quietly 'rm -f README.md'
+mv .git .git.home 

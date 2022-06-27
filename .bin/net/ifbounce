@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+sudo ip link set $1 down
+sleep 1
+sudo ip link set $1 up

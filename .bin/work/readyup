@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+offline && exit 1
+worksync
+mkdir -p "$HOMEWORK/log"
+mkdir -p "$HOMEWORK/.afk"
+LOGFILE="$HOMEWORK/log/`date '+%Y.%m.%d'`.md"
+[[ -f "$LOGFILE" ]] && echo 'already ready!' && exit
+
+echo "<!-- `date +%s` -->" > $LOGFILE
+echo '###' `date '+%D'` >> $LOGFILE
+echo '' >> "$LOGFILE"
+worklog "Happy `date +%A`!"
+
+AFKFILE="$HOMEWORK/.afk/`date '+%Y.%m.%d'`.afk"
+
+if [[ ! -f "$AFKFILE" ]]; then
+    quietly 'rm -fr $HOMEWORK/.afk/*.afk'
+    echo 0 > "$AFKFILE"
+fi
+worksync

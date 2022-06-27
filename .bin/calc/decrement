@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sub $1 1

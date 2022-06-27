@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+[[ ! -z "$1" ]] && qmk compile "$1" || echo 'compile had errors'

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+cat $HOME/.gitconfig | grep email | cut -d " " -f 3

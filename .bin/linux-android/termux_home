@@ -1,0 +1,7 @@
+pkg install git vim openssh
+git fetch
+git reset --hard origin/main
+source .profile
+termux_init
+apt update
+apt upgrade -y

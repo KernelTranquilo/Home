@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -e
+
+function getWeekHours {
+     DAYOFWEEK=`date '+%u'`
+     for (( DAY=1; DAY<DAYOFWEEK; ++DAY )); do
+        SUBDAYS="-"$DAY"days"
+        DAYLOG=`date +%Y.%m.%d -d "$SUBDAYS"`
+        DAYLOG="$HOMEWORK/log/$DAYLOG.md"
+        [[ -f "$DAYLOG" ]] &&\
+            DAYHOURS=`tail -n1 $DAYLOG | gawk '{ print $1 }'` &&\
+            TOTAL=`add $DAYHOURS $TOTAL`
+    done
+    TOTAL=${TOTAL:-'0'}
+    echo $TOTAL
+}
+
+[[ -z "$DATE" ]] && export DATE=`date '+%Y.%m.%d'`
+[[ -z "$LOGFILE" ]] && export LOGFILE="$HOMEWORK/log/$DATE.md"
+[[ ! -f "$LOGFILE" ]] && echo 'day never started...' && exit 1
+[[ -z "$AFKFILE" ]] && export AFKFILE="$HOMEWORK/.afk/$DATE.afk"
+[[ -z "$START" ]] && export START=`head -n 1 $LOGFILE | gawk '{print $2}'`
+[[ -z "$WEEKHOURS" ]] && export WEEKHOURS=`getWeekHours`
+[[ ! -z "$1" ]] && watch -tcn$1 "worktimer" && exit
+
+if [[ `tail -n1 "$LOGFILE" | grep -- '-->'` ]]; then
+    cat "$LOGFILE" | grep -v -- '<!--\|-->\|today:'
+else
+    HOURS=`hourssince $START`
+    AFK=`cat $AFKFILE`
+    HOURS=`sub $HOURS $AFK`
+
+    echo "$HOURS hours"
+    TOTALHOURS=`add $HOURS $WEEKHOURS`
+    echo "$TOTALHOURS total"
+    echo "`sub 40 $TOTALHOURS` left"
+    echo "$AFK afk"
+    echo
+    cat $LOGFILE | grep '\:.*-\|\+\|#\|^$'
+    echo "- `date +%R`"
+fi

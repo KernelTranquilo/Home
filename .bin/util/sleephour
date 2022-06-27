@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+[[ -z "$1" ]] && echo 'Segmentation fault' && exit 1
+
+sleep `mul $1 60 60`

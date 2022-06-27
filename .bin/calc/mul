@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+[[ -z $1 ]] && exit
+
+function getProductOf {
+    number1=`numform $1`
+    number2=`numform $2`
+    echo $number1+$number2 | gawk -F+ '{ print $1 * $2 }'
+}
+
+args="${*}"
+args=($args)
+
+result=1
+for arg in "${args[@]}"; do
+    result=`getProductOf $result $arg`
+done
+
+echo $result

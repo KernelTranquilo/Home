@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+#-w for whole word only
+#grep --color=always -rnw $2 -e "$1"
+grep --color=always -rn $2 -e "$1"

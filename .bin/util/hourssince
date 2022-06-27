@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+[[ -z $1 ]] && echo 0 && exit
+NOW=`date +%s`
+SECONDS=`sub $NOW $1`
+MINUTES=`div $SECONDS 60`
+HOURS=`div $MINUTES 60`
+
+echo $HOURS
+

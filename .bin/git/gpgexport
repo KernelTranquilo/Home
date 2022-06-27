@@ -1,0 +1,1 @@
+[[ ! -z "$1" ]] && gpg --armor --export $1 || echo "no key provided"

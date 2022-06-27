@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+secretly '/c/apps/android-studio/bin/studio64.exe'

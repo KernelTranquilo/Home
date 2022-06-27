@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -e
+LOGFILE=$HOMEWORK/log/`date '+%Y.%m.%d'`.md
+[[ ! -f "$LOGFILE" ]] && echo 'day never started...' && exit 1
+[[ ! `tail -n1 $LOGFILE | grep -- '-->'` ]] && echo 'day still in progress...' && exit 1
+quietly "cat $LOGFILE | grep 'afterhours:'" && echo 'afterhours already entered, quit working!' && exit 1
+offline && exit 1
+
+read -p "afterhours: " AFTERHOURS
+AFTERHOURS=`numform $AFTERHOURS`
+[[ -z "$AFTERHOURS" ]] && echo 'invalid hours' && exit 1
+[[ -z "$1" ]] && read -p "log: " AFTERHOURS_LOG || AFTERHOURS_LOG="$@"
+[[ -z "$AFTERHOURS_LOG" ]] && echo 'empty log message' && exit 1
+TOTAL=`tail -n1 $LOGFILE | gawk '{ print $1 }'`
+TOTAL=`numform $TOTAL` 
+TOTAL=`add $TOTAL $AFTERHOURS` 
+WEEKTOTAL=`tail -n5 $LOGFILE | gawk '{ print $1 }'`
+WEEKTOTAL=`echo $WEEKTOTAL | gawk '{ print $1 }'`
+WEEKTOTAL=`add $WEEKTOTAL $AFTERHOURS`
+
+echo '' >> "$LOGFILE"
+worklog "$AFTERHOURS_LOG"
+worklog "$TOTAL hours" 
+echo '' >> "$LOGFILE"
+echo '<!--' "`date +%s`" >> "$LOGFILE"
+echo 'week:' >> "$LOGFILE"
+echo $WEEKTOTAL >> "$LOGFILE"
+echo 'afterhours:' >> "$LOGFILE"
+echo "$AFTERHOURS" >> "$LOGFILE"
+echo 'today:' >> "$LOGFILE"
+echo "$TOTAL -->" >> "$LOGFILE"
+worksync

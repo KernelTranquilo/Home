@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+NOTES="$HOMEWORK/notes"
+[[ -z $1 ]] && code "$NOTES" && exit
+
+DIR="$NOTES/$1"
+DATE="`date '+%Y.%m'`"
+[[ ! -z "$2" ]] && NOTEFILE="$DIR/$DATE.$2.md" || NOTEFILE="$DIR/$DATE.md"
+
+mkdir -p "$DIR"
+
+vim "$NOTEFILE"

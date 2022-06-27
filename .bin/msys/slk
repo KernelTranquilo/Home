@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+secretly '$HOME/AppData/Local/slack/slack.exe'

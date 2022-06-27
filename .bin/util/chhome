@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+NEWHOME=`realpath $1`
+[[ -d "$NEWHOME" ]] || exit
+HOME="$NEWHOME" $SHELL

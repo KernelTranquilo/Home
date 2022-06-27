@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+mul 0.3048 $1

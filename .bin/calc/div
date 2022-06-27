@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+[[ -z $1 ]] && exit
+function getQuotient {
+    number1=`numform $1`
+    number2=`numform $2`
+    echo $number1+$number2 | gawk -F+ '{ print $1 / $2 }'
+}
+
+args="${*}"
+args=($args)
+
+result="$1"
+for (( index = 1 ; index < ${#args[@]} ; ++index )) ; do
+    denominator=${args[index]}
+    `iszero $denominator` && echo 'infinity' && exit 1
+    result=`getQuotient $result $denominator`
+done
+
+echo $result
+

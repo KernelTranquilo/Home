@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+if  [[ -z $1 ]]; then
+  echo no user specified
+  exit 1
+fi
+
+xhost -
+xhost +SI:localuser:$1
+if  [[ -z $2 ]]; then
+  sudo su - $1 -c "DISPLAY=$DISPLAY gnome-terminal" > /dev/null 2>&1 &
+else
+  sudo su - $1 -c "DISPLAY=$DISPLAY $2" > /dev/null 2>&1 &
+fi
+exit 0

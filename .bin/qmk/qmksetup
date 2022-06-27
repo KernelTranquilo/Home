@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+which qmk && echo "qmk installed" && exit 1
+
+if [[ $OSTYPE == "darwin"* ]]; then
+  brew install qmk/qmk/qmk
+  BIN="/usr/local/bin"
+else
+  sudo apt install python3-pip
+  python3 -m pip install --user qmk
+  BIN="$HOME/.local/bin"
+fi
+
+$BIN/qmk setup

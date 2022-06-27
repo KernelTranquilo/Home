@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+[[ -z "$TIME" ]] && TIME=15
+
+while true
+do
+  clear
+  sh -c "$@"
+  sleep $TIME
+done

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+while true
+do
+        clear
+        echo "this isn't really top"
+        ps aux
+        sleep 2
+done

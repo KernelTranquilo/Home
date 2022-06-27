@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+query="$@"
+search="${query// /+}"
+open "https://www.amazon.com/s?k=$search"

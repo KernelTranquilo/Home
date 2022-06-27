@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -e
+
+surely 'overwrite VS Code settings'
+
+settings='{\n
+    "editor.fontSize": 13,\n
+    "editor.lineNumbers": "on",\n
+    "editor.tabSize": 4,\n
+    "editor.mouseWheelZoom": true,\n
+    "files.autoSave": "onFocusChange",\n
+    "workbench.startupEditor": "none",\n
+    "workbench.editor.enablePreview": false,\n
+    "workbench.editor.enablePreviewFromQuickOpen": false,\n
+    "git.enableSmartCommit": true,\n
+    "explorer.confirmDragAndDrop": true,\n
+    "editor.suggestSelection": "first",\n
+    "explorer.confirmDelete": false,\n
+    "terminal.integrated.confirmOnExit": "never",\n
+    "workbench.colorTheme": "Tokyo Night Storm",\n
+    "extensions.ignoreRecommendations": true,\n
+    "security.workspace.trust.untrustedFiles": "open",\n
+    "window.zoomLevel": 1,\n
+    "update.mode": "manual"\n
+}\n'
+
+if [[ "$OSTYPE" == 'linux'* ]]; then
+    cd $HOME/.config
+elif [[ "$OSTYPE" == 'darwin'* ]]; then
+    cd $HOMELIB/Application\ Support
+elif [[ "$OSTYPE" == 'msys' ]]; then
+    cd $APPDATA
+fi
+cd ./Code/User
+
+echo -e $settings > settings.json

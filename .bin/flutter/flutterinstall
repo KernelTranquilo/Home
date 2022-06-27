@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+[[ ! -z "$1" ]] && VERSION="$1" || VERSION='stable' # 2.10.1
+surely "install flutter $VERSION"
+cd
+rm -fr .pub-cache .flutter .flutter-devtools .dart .dartServer
+cd $HOMELIB
+rm -fr flutter
+git clone https://github.com/flutter/flutter.git
+cd flutter
+git checkout "$VERSION"
+bin/flutter doctor

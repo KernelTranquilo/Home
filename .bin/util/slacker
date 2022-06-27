@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+
+if [[ ! -z "$2" ]]; then
+  CHANNEL="$2"
+fi
+if [[ ! -z "$3" ]]; then
+  WEBHOOK="$3"
+else
+  echo 'slacker needs a message, channel and webhook id'
+  exit 1
+fi
+
+curl -X POST --data-urlencode "payload={\"channel\": \"#$CHANNEL\", \"username\": \"webhookbot\", \"text\": \"$1\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/$WEBHOOK
+

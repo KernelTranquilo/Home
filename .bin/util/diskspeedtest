@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+if [[ -z "$1" ]]; then
+    echo 'location required...'
+    exit 1
+else
+    dd if=/dev/zero of=$1/disktestfile bs=5k count=100k
+    quietly "rm $1/disktestfile"
+fi
+

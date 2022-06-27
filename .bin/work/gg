@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+offline && exit 1
+DATE=`date '+%Y.%m.%d'`
+LOGFILE="$HOMEWORK/log/$DATE.md"
+[[ ! -f "$LOGFILE" ]] && echo 'day never started...' && exit 1
+[[ `tail -n1 "$LOGFILE" | grep -- '-->'` ]] && echo 'day already finished.' && exit 1
+
+WEEKTOTAL=`worktimer`
+TOTAL=`echo $WEEKTOTAL | awk '{ print $1  }'`
+WEEKTOTAL=`echo $WEEKTOTAL | awk '{ print $3  }'`
+
+worklog "$TOTAL hours"
+echo '' >> "$LOGFILE"
+echo '<!--' "`date +%s`" >> "$LOGFILE"
+echo 'week:' >> "$LOGFILE"
+echo $WEEKTOTAL >> "$LOGFILE"
+echo 'afk:' >> "$LOGFILE"
+cat "$HOMEWORK/.afk/$DATE.afk" >> "$LOGFILE"
+echo 'today:' >> "$LOGFILE"
+echo "$TOTAL -->" >> "$LOGFILE"
+echo 'gg!'
+worksync
+cd
+cat .bash_history | grep -v 'wl *' > temp_history && mv temp_history .bash_history
+cat .zsh_history | grep -v 'wl *' > temp_history && mv temp_history .zsh_history

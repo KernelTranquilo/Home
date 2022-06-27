@@ -1,0 +1,1 @@
+adb shell screenrecord --bit-rate 6000000 /sdcard/`date +%s`.mp4

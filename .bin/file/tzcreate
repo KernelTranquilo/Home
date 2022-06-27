@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+[[ ! -z "$1" ]] && [[ ! -z "$2" ]] && tar -czvf "$1".tar.gz "$2" && exit
+
+echo "pass new_file_name and target"
+exit 1

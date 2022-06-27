@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+[[ ! -z "$1" ]] && secretly "emulator '$@'" && exit
+emulator -list-avds

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+sudo apt update 
+sudo apt upgrade
+sudo apt autoremove
+sudo apt install vim git tig build-essential tmux screen ioquake3-server # steam-installer lm-sensors qemu-kvm blender gimp
+
+cat "$HOME/.bashrc" | grep 'source $HOME/\.profile' || echo 'source $HOME/.profile' >> "$HOME/.bashrc"

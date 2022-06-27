@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+# [[ ! -z "$1" ]] && CODEARGS=`cygpath -w $@`
+
+secretly "/c/apps/code/Code.exe $@"

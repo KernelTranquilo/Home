@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+git fetch origin pull/$1/head:PR-$1

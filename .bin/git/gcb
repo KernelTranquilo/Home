@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+MESSAGE="$@"
+[[ -z "$MESSAGE" ]] && echo "no message provided" && exit 1
+git commit -m"`git branch --show-current` $MESSAGE"
+# message="${*}"
+# git commit -m "`git rev-parse --abbrev-ref HEAD` - $message"

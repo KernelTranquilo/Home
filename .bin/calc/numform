@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+number="$1"
+number="${number//[!0-9.-]/}"
+[[ -z "$number" ]] && exit 1
+echo "$number" #| gawk '{ print $1/1 }'

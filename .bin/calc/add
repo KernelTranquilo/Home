@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+function getSumOf {
+    number1=`numform $1`
+    number2=`numform $2`
+    echo $number1+$number2 | gawk -F+ '{ print $1 + $2 }'
+}
+
+args="${*}"
+args=($args)
+
+result=0
+for arg in "${args[@]}"; do
+    result=`getSumOf $result $arg`
+done
+
+echo $result

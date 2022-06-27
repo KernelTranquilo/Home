@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+cd $HOME/.bin/msys
+
+if [[ "$1" == "su" ]]; then
+    su ${@:2}
+    exit
+fi
+args="$@"
+[[ ! -z "$args" ]] && start sudo.bat $args || start sudo.bat bash -l
+
+while true; do
+    read -p 'continue...'
+done

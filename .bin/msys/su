@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+cd $HOME/.bin/msys
+if [[ "$1" == "-" ]]; then
+  sudoer="$2"
+  if [[ "$3" == "-c" ]];then
+    commando="${@:4}"
+  fi
+else
+  sudoer="$1"
+  if [[ "$2" == "-c" ]];then
+    commando="${@:3}"
+  fi
+fi
+  echo $commando
+
+if [[ ! -z "$sudoer" ]]; then
+  if [[ ! -z "$commando" ]];then
+    start sudosu.bat $sudoer $commando || exit 1
+  else
+    start su.bat $sudoer || exit 1
+  fi
+fi
+while true; do
+    read -p 'continue...'
+done

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sh -c "$@" 2> /dev/null

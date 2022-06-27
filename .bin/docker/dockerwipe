@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+surely destroy all the dockers
+processes=$(docker ps -a -q)
+[[ ! -z "$processes" ]] && docker stop $processes || echo stop failed
+processes=$(docker ps -a -q)
+[[ ! -z "$processes" ]] && docker rm $processes || echo rm failed
+processes=$(docker ps -a -q)
+[[ ! -z "$processes" ]] && docker rmi -f $processes || echo rmi failed
+docker images
+docker ps -a
+
+# docker stop $(docker ps -a -q)
+# docker rm $(docker ps -a -q)
+# docker rmi -f $(docker images -a -q)
+# docker rmi $1
+# docker images
+# docker ps -a
+

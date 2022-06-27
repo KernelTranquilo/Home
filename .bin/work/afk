@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+set -e
+cd $HOME
+DATE="`date '+%Y.%m.%d'`"
+LOGFILE="$HOMEWORK/log/$DATE.md"
+[[ ! -f "$LOGFILE" ]] && echo 'day never started...' && exit 1
+[[ `tail -n1 "$LOGFILE" | grep -- '-->'` ]] &&\
+    echo 'day already finished.' && exit 1
+
+if [[ "$1" = "now" ]]; then
+    START=`date +%s`
+
+    [[ ! -z "$2" ]] &&\
+      SUB="`mul $2 60 60`" &&\
+      SUB=`toint $SUB` &&\
+      START="`sub $START $SUB`"
+
+    START_TEXT=`date -d "@$START" '+%R'`
+    echo "AFK since $START_TEXT"
+    read -p "Return?"
+    AFK=`hourssince $START`
+else
+    AFK=`[[ -z "$1" ]] && echo 0 || echo $1`
+fi
+
+mkdir -p "$HOMEWORK/.afk"
+AFKFILE="$HOMEWORK/.afk/$DATE.afk"
+
+if [[ -f $AFKFILE ]]; then
+    AFKTIME=`cat $AFKFILE`
+    AFKTIME=`add $AFKTIME $AFK`
+    echo $AFKTIME > $AFKFILE
+else
+    echo $AFK > $AFKFILE
+fi
+
+cat $AFKFILE
+
+if [[ "$AFK" != "0" ]]; then
+  worklog "$AFK afk"
+fi

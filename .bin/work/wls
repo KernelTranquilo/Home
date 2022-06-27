@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+[[ ! -d "$HOMEWORK/log" ]] && echo 'logs directory missing'
+FILES="$HOMEWORK/log"
+LOG="$HOMEWORK/log/`date '+%Y.%m.%d'`.md"
+[[ -f "$LOG" ]] && FILES="$FILES $LOG"
+code $FILES

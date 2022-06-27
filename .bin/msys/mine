@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+secretly '/c/apps/rubymine/bin/rubymine64.exe'

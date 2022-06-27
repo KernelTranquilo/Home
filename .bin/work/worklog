@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+LOGFILE=$HOMEWORK/log/`date '+%Y.%m.%d'`.md
+[[ ! -f "$LOGFILE" ]] && echo 'day never started...' && exit 1
+[[ `tail -n1 "$LOGFILE" | grep -- '-->'` ]] &&\
+    echo 'day already finished.' && exit 1
+
+if [[ -z "$1" ]]; then
+    vim $LOGFILE
+else
+    offline && exit 1
+    if [[ "$1" = "+" ]];then
+        echo "  $@" >> $LOGFILE
+    else
+        echo "+ `date +%R` - $@" >> $LOGFILE    
+    fi
+    worksync
+fi

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+
+function getAbsOf {
+    numform "$1" | gawk '{print $1 < 0 ? -$1 : $1}'
+}
+export -f getAbsOf
+
+eachmap "${*}" getAbsOf

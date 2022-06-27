@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+if [[ -z "$1" ]] ;then  
+  top -l 1 | grep 'Processes\|CPU usage\|Mem'
+  echo
+  iStats 
+else
+  watch -tcn$1 "stats"
+fi	

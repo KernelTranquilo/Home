@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+function isLessThan {
+    number1=`numform $1`
+    number2=`numform $2`
+    [[ "`echo $number1 $number2 | gawk '{ print $1 < $2 }'`" == '1' ]] && exit
+    exit 1
+}
+
+isLessThan $1 $2

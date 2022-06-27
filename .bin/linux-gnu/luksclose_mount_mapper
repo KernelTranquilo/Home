@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+sudo umount $1
+sudo cryptsetup luksClose $2

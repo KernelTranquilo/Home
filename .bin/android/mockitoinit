@@ -1,0 +1,2 @@
+mkdir test/resources/mockito-extensions
+echo  mock-maker-inline > test/resources/mockito-extensions/org.mockito.plugins.MockMaker

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+grep MHz /proc/cpuinfo

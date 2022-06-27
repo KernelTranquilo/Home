@@ -1,0 +1,21 @@
+[core]
+	autocrlf = input
+	editor = vim
+[user]
+	email = home@127.0.0.1
+	name = home
+[alias]
+	st = status
+	co = checkout
+	br = branch
+[color]
+	ui = auto
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pull]
+	ff = only
+[init]
+	defaultBranch = main

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+if [[ -z "$1" ]];then
+  DIS="HDMI-2"
+else
+  DIS="$1"
+fi
+
+xrandr --output $DIS --transform 1,0,-1,0,1,0,0,0,1
+xrandr

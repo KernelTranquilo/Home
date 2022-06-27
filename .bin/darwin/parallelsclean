@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cd $HOME && rm -frv */'$RECYCLE.BIN' */desktop.ini

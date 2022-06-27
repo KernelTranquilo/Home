@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+workprint | grep 'hour\|#' 2>&1 | tail -20

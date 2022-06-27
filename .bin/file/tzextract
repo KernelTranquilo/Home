@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+[[ ! -z "$1" ]] && tar -zxvf "$1" && exit
+
+echo "no file provided"
+exit 1

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+[[ -z "$1" ]] && echo 'pass user and repo' && exit 1
+[[ ! -z "$2" ]] && PROJECT="$1/$2" || PROJECT="$1"
+
+cd $PROJECTS
+git clone https://github.com/$PROJECT

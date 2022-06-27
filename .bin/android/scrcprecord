@@ -1,0 +1,1 @@
+scrcpy --record `date +%s`.mp4

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+[[ -z "$1" ]] && echo 'Unix timestamp needed...' && exit 1
+date -d "@$1"

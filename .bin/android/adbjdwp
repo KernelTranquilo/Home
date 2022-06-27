@@ -1,0 +1,3 @@
+[[ -n $1 ]] && adb forward tcp:5005 jdwp:$1 && exit
+echo something is wrong
+exit 1

@@ -1,0 +1,2 @@
+until adb shell echo ready; do sleep 11; done
+

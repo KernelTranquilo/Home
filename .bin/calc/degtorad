@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+function getDegToRad {
+    number=`numform $1`
+    number=`div $number 180`
+    number=`mul $number $PI`
+    echo "$number"
+}
+export -f getDegToRad
+eachmap "${*}" getDegToRad

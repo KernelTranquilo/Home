@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -e
+secretly '/c/apps/clion/bin/clion64.exe'

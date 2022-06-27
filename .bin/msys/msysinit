@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+pacman -Syu
+pacman -S vim git gcc cmake ruby python python3 procps-ng tmux diffutils tig

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+app "$1"
+hideapp "$1"

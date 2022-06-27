@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+freq="$1"
+freq=${freq:-'10'}
+tmux new-session "worktimer $freq" \; split-window 'bash -l' \; select-layout even-horizontal \;

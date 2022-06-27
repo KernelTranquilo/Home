@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+cd /c/Program\ Files/Mozilla\ Firefox
+secretly './firefox.exe'

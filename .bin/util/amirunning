@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+quietly "ps aux | grep $1" && echo 'running' && exit
+echo 'sleeping'
+exit 1

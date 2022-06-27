@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+screen -m -S syncwithrsync rsync -a --progress --checksum $1/. $2
+                                              #--size-only

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+offline && exit 1
+echo WAN\!

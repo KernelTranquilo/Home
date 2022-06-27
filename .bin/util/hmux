@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+quietly 'tmux attach' && exit
+[[ -z "$2" ]] && echo 'provide commands' && exit
+tmux new-session "$1" \; split-window "$2" \; select-layout even-horizontal

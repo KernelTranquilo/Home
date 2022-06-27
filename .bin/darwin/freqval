@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+freq=`sysctl hw.cpufrequency | gawk '{print $2}'`
+freq=`div $freq	1000000000`
+echo $freq GHz

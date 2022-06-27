@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+cd /c/apps/vs2019/ide/Common7/IDE
+./devenv.exe

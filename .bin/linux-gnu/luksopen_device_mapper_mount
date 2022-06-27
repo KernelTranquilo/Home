@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+sudo cryptsetup luksOpen $1 $2
+sudo mount /dev/mapper/$2 $3

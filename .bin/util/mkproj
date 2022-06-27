@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+cd $PROJECTS
+[[ ! -z "$1" ]] && [[ ! -e "$1" ]] &&\
+  mkdir -p "$1" && cd "$1" &&\
+  git init &&\
+  exit
+echo 'could not create project :-('
+exit 1

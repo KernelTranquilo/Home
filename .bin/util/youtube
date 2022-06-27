@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+[[ ! -z "$1" ]] && URLPATH="/watch?v=$1"
+open https://www.youtube.com$URLPATH
+

@@ -1,0 +1,2 @@
+# tasklist '//v' | grep `whoami`
+powershell Get-Process 

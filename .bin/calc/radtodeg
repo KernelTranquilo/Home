@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+function getRadToDeg {
+    number=`numform $1`
+    number=`mul $number 57.29578`
+    echo "$number°"
+}
+export -f getRadToDeg
+eachmap "${*}" getRadToDeg
